@@ -1,1 +1,1 @@
-# k8s
+# K8s development script and yaml file
