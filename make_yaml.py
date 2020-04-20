@@ -47,7 +47,7 @@ class Deplyment_yaml(object):
                                   {'rollingUpdate': {'maxSurge': 1, 'maxUnavailable': 0}
                                    },
                               'minReadySeconds': 60,
-                              'template': {'metadata': {'labels': {'app': 'zhipin-common'}},
+                              'template': {'metadata': {'labels': {'app': 'zhipin-test'}},
                                            'spec': {
                                                'terminationGracePeriodSeconds': 60,
                                                'containers': [
@@ -98,11 +98,11 @@ class Deplyment_yaml(object):
 
 
 if __name__ == '__main__':
-    service_name = 'zhipin-common'
+    service_name = 'zhipin-test'
     replicas = 2
     version = "1.0.196"
     disconf_env = 'qa'
-    image = "registry-img.weizhipin.com/deploy/" + service_name + "-server:" + version
+    image = "registry-img.test.com/deploy/" + service_name + "-server:" + version
     jvm_plugins = ''
     ops_monitor = ''
     server_opts = ''
@@ -117,7 +117,7 @@ if __name__ == '__main__':
         {'name': 'aliyun_logs_boss-info', 'value': 'stdout'},
         {'name': 'aliyun_logs_boss-access', 'value': "/data/logs/access/*.log"},
         {'name': 'aliyun_logs_boss-trace', 'value': "/data/logs/trace/*.log"},
-        {'name': 'aliyun_logs_boss-info', 'value': "/data/logs/zhipin-common/*.log"},
+        {'name': 'aliyun_logs_boss-info', 'value': "/data/logs/zhipin-test/*.log"},
     ]
     res = Deplyment_yaml(service_name, replicas, image, disconf_env, jvm_plugins, ops_monitor, server_opts, http_port,
                          tcp_port, env)
